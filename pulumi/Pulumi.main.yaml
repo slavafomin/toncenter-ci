@@ -1,0 +1,18 @@
+
+config:
+  pulumi:template: aws-typescript
+
+  aws:region: eu-central-1
+  aws:allowedAccountIds:
+    - "000000000000"
+
+  app:appName: toncenter
+  app:awsAccountId: "000000000000"
+  app:instancesCount: 1
+  app:commonStackPath: org-name/aws-common/main
+
+  # Specify SGs that needs access to the API
+  app:ingressSGIds:
+    - sg-10000000000000000
+    - sg-20000000000000000
+    - sg-30000000000000000

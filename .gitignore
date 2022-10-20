@@ -1,0 +1,12 @@
+
+# IDE
+/.idea/
+
+# OS
+.DS_Store
+
+# Temporary files
+**/*.log
+
+# Node modules
+/**/node_modules/

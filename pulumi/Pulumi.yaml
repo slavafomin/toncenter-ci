@@ -1,0 +1,4 @@
+
+name: toncenter
+runtime: nodejs
+description: TONCENTER (ton-http-api) infrastructure resources

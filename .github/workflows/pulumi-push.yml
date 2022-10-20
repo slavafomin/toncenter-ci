@@ -1,0 +1,42 @@
+
+name: Pulumi Push
+
+on:
+  push:
+    paths:
+      - '.github/workflows/pulumi-push.yml'
+      - 'pulumi/**'
+    branches:
+      - main
+
+  workflow_dispatch: ~
+
+jobs:
+  preview:
+    name: Pulumi Push
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 16.x
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: eu-central-1
+
+      - run: npm install
+        working-directory: pulumi/aws-common
+
+      - uses: pulumi/actions@v3
+        with:
+          command: up
+          stack-name: main
+          work-dir: pulumi/aws-common
+          refresh: true
+        env:
+          PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}

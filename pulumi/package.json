@@ -1,0 +1,11 @@
+{
+  "name": "pulumi-ton-http-api",
+  "devDependencies": {
+    "@types/node": "^16"
+  },
+  "dependencies": {
+    "@pulumi/aws": "^5.17.0",
+    "@pulumi/awsx": "^0.40.1",
+    "@pulumi/pulumi": "^3.43.1"
+  }
+}
